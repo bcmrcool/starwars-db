@@ -65,7 +65,10 @@ class CharacterView extends Component {
 
  	  	getSpecies(url, species){
  	  		var species = species.filter(specie => specie.url == url)
- 	  		return species[0].name
+ 	  		if (species.length === 0){
+ 	  			return "Unknown"
+ 	  		}
+ 	  		else return species[0].name
  	  	}
 
  	  	getEra(birthDate) {
