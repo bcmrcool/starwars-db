@@ -19,20 +19,16 @@ class SearchBar extends Component {
 		let items = []
 		listOfAllThings.forEach(thing =>{
   			if(thing.name && thing.name.toLowerCase().includes(searchTerm.toLowerCase()) && !items.includes(thing)){
-  				debugger
       			items.push(thing)
 			}
   			if(thing.title && thing.title.toLowerCase().includes(searchTerm.toLowerCase()) && !items.includes(thing)){
   	  			items.push(thing)
   			}
 		})
-		console.log(items)
-		debugger
 		this.props.addSearchItems(items)
 	}
 
 	onInputChange = event => {
-		console.log(event.target.value)
 		this.setState({term: event.target.value})
 		if (event.target.value === ""){
 			this.props.setSearchMode(false)

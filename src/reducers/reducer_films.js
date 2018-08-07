@@ -4,7 +4,7 @@ const listOfFilms = (state= {}, action) => {
 	switch(action.type){
 		case 'FETCH_FILMS':
 			if (action.payload.data){
-				return action.payload.data.items
+				return action.payload.data.items[0]
 			}
 			else return "None"
 		default:

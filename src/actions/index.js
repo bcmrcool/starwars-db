@@ -21,7 +21,6 @@ export const setSubject = subject => {
 }
 
 export const addSearchItems = searchItem =>{
-	debugger
 	return {
 		type: ADD_SEARCH_ITEMS,
 		payload: searchItem

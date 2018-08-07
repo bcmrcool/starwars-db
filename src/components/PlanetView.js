@@ -22,7 +22,7 @@ class PlanetView extends Component {
 
  	  	getPerson(url, people){
  	  		var person = people.filter(person => person.url === url)
- 	  		return person[0].name
+ 	  		return person.length > 0 && person[0].name
  	  	}
 
  	  	renderPeople(subjectPeople, people){
@@ -33,8 +33,8 @@ class PlanetView extends Component {
  	  		let thePeople = subjectPeople.map(person => {
  	  			return this.getPerson(person, people)
  	  		})
- 	  		let renderedPeople = thePeople.map(person => {
- 	  			return <li key={person}>{person}</li>
+ 	  		let renderedPeople = thePeople.map((person, index) => {
+ 	  			return <li key={index}>{person}</li>
  	  		})
  	  		return renderedPeople
  	  	}

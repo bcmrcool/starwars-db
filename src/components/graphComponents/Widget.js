@@ -20,7 +20,7 @@ class Widget extends Component {
 
     render() {
         return (
-            <div onClick={this.props.onClick} style={this.spanStyles} className="Widget">
+            <div className={this.props.clickable ? "clickable Widget": "Widget"} onClick={this.props.onClick} style={this.spanStyles}>
                 <div className="header">
                     <h2>{this.props.heading}</h2>
                 </div>

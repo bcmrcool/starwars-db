@@ -10,6 +10,7 @@ import currentType from './reducer_currentType'
 import currentItem from './reducer_currentItem'
 import searchMode from './reducer_searchMode'
 import searchItems from './reducer_searchItems'
+import hasLoaded from './reducer_hasLoaded'
 
 const rootReducer = combineReducers({
 	people: listOfPeople,
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
 	currentSubjectType: currentType,
 	currentSubject: currentItem,
 	isSearchMode: searchMode,
-	listOfSearchItems: searchItems
+	listOfSearchItems: searchItems,
+	hasLoaded: hasLoaded
 })
 
 export default rootReducer

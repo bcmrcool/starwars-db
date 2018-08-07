@@ -7,7 +7,7 @@ class CharacterView extends Component {
 
 	  	getPlanet(url, planets){
   			var planet = planets.filter(planet => planet.url === url)
-  			return planet[0].name
+  			return planet.length > 0 && planet[0].name
  	  	}
 
  	  	getFilm(url, films){
@@ -17,7 +17,7 @@ class CharacterView extends Component {
 
  	  	getVehicle(url, vehicles){
  	  		var vehicle = vehicles.filter(vehicle => vehicle.url === url)
- 	  		return vehicle[0].name
+ 	  		return vehicle.length > 0 && vehicle[0].name
  	  	}
 
  	  	renderFilms(subjectFilms, films){
@@ -46,7 +46,7 @@ class CharacterView extends Component {
 
  	  	getStarship(url, starships){
  	  		var starship = starships.filter(starship => starship.url === url)
- 	  		return starship[0].name
+ 	  		return starship.length > 0 && starship[0].name
  	  	}
 
  	  	renderStarships(subjectStarships, starships){
@@ -57,8 +57,8 @@ class CharacterView extends Component {
  	  		let theStarships = subjectStarships.map(starship => {
  	  			return this.getStarship(starship, starships)
  	  		})
- 	  		let renderedStarships = theStarships.map(starship => {
- 	  			return <li key={starship}>{starship}</li>
+ 	  		let renderedStarships = theStarships.map((starship, index) => {
+ 	  			return <li key={index}>{starship}</li>
  	  		})
  	  		return renderedStarships
  	  	}

@@ -50,7 +50,6 @@ class AppHub extends Component {
   }
 
   handleWidgetClick(item){
-    console.log(item)
     this.props.setSubject(item)
     this.props.setSearchMode(false)
   }
@@ -63,19 +62,18 @@ class AppHub extends Component {
       if (subject !=="ALL" && this.props.isSearchMode === false) {
     		switch(subjectType){
     			case "character":
-    				return <CharacterView subject={subject} vehicles={this.props.vehicles} starships={this.props.starships} species={this.props.species} films={this.props.films[0]} planets={this.props.planets} />
+    				return <CharacterView subject={subject} vehicles={this.props.vehicles} starships={this.props.starships} species={this.props.species} films={this.props.films} planets={this.props.planets} />
           case "species":
-            return <SpeciesView subject={subject} people={this.props.people} films={this.props.films[0]} planets={this.props.planets} /> 
+            return <SpeciesView subject={subject} people={this.props.people} films={this.props.films} planets={this.props.planets} /> 
           case "planet":
-            return <PlanetView subject={subject} people={this.props.people} films={this.props.films[0]} />
+            return <PlanetView subject={subject} people={this.props.people} films={this.props.films} />
           case "vehicle":
-            return <VehicleView subject={subject} people={this.props.people} films={this.props.films[0]} />
+            return <VehicleView subject={subject} people={this.props.people} films={this.props.films} />
     		}
   	  }
       else if (this.props.isSearchMode === true){
-        console.log(this.props.listOfSearchItems)
         let itemList = this.props.listOfSearchItems.map(item =>{
-          return <Widget key={item.url} onClick={() => this.handleWidgetClick(item)} heading={item.name ? item.name : item.title}></Widget>
+          return <Widget clickable={true} key={item.url} onClick={() => this.handleWidgetClick(item)} heading={item.name ? item.name : item.title}></Widget>
         })
         return  <div className="App">{itemList}</div>
       }
@@ -93,8 +91,12 @@ class AppHub extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  hasLoaded: state.hasLoaded
+})
+
 const mapDispatchToProps = dispatch => (
 	bindActionCreators({setSubject: setSubject, setSearchMode: setSearchMode, fetchPeople: fetchPeople, fetchFilms: fetchFilms, fetchStarships: fetchStarships, fetchVehicles: fetchVehicles, fetchSpecies: fetchSpecies, fetchPlanets: fetchPlanets}, dispatch)
 )
 
-export default connect(null, mapDispatchToProps)(AppHub)
+export default connect(mapStateToProps, mapDispatchToProps)(AppHub)

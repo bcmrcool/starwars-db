@@ -7,7 +7,7 @@ class SpeciesView extends Component {
 
 	  	getPlanet(url, planets){
   			var planet = planets.filter(planet => planet.url === url)
-  			return planet[0].name
+  			return planet.length > 0 && planet[0].name
  	  	}
 
  	  	getFilm(url, films){
@@ -27,7 +27,7 @@ class SpeciesView extends Component {
 
  	  	getPerson(url, people){
  	  		var person = people.filter(person => person.url === url)
- 	  		return person[0].name
+ 	  		return person.length > 0 && person[0].name
  	  	}
 
  	  	renderPeople(subjectPeople, people){

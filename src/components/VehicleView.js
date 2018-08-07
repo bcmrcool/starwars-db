@@ -15,8 +15,8 @@ class VehicleView extends Component {
  	  		let theFilms = subjectFilms.map(film => {
  	  			return this.getFilm(film, films)
  	  		})
- 	  		let renderedFilms = theFilms.map(film =>{
- 	  			return <li key={film}>{film}</li>
+ 	  		let renderedFilms = theFilms.map((film, index) =>{
+ 	  			return <li key={index}>{film}</li>
  	  		})
  	  		return renderedFilms
  	  	}
@@ -34,8 +34,8 @@ class VehicleView extends Component {
  	  		let thePeople = subjectPeople.map(person => {
  	  			return this.getPerson(person, people)
  	  		})
- 	  		let renderedPeople = thePeople.map(person => {
- 	  			return <li key={person}>{person}</li>
+ 	  		let renderedPeople = thePeople.map((person, index) => {
+ 	  			return <li key={index}>{person}</li>
  	  		})
  	  		return renderedPeople
  	  	}
